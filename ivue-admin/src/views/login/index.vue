@@ -7,9 +7,10 @@
       <!-- username -->
       <el-form-item>
         <span class="svg-container">
-          <el-icon>
+          <!-- <el-icon>
             <Avatar />
-          </el-icon>
+          </el-icon> -->
+          <svg-icon icon="https://res.lgdsunday.club/user.svg" />
         </span>
         <el-input placeholder="请输入用户名" name="username" type="text" />
       </el-form-item>
@@ -35,6 +36,7 @@
 
 <script setup lang="ts">
 import { Avatar, Lock } from '@element-plus/icons';
+import SvgIcon from '@/components/SvgIcon/index.vue';
 </script>
 
 <style scoped lang="scss">

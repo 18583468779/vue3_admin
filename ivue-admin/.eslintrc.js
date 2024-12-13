@@ -15,6 +15,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/multi-word-component-names': 'off',
+    'space-before-function-paren': 'off',
     quotes: 'warn',
     // 添加分号规则
     semi: ['error', 'always']
