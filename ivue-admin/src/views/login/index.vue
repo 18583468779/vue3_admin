@@ -1,27 +1,27 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form">
+    <el-form class="login-form" :model="formModel" :rules="formRules">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
       <!-- username -->
-      <el-form-item>
+      <el-form-item prop="username">
         <span class="svg-container">
-          <!-- <el-icon>
+          <el-icon>
             <Avatar />
-          </el-icon> -->
-          <svg-icon icon="https://res.lgdsunday.club/user.svg" />
+          </el-icon>
+          <!-- <svg-icon icon="https://res.lgdsunday.club/user.svg" /> -->
         </span>
-        <el-input placeholder="请输入用户名" name="username" type="text" />
+        <el-input placeholder="请输入用户名" name="username" type="text" v-model="formModel.username" />
       </el-form-item>
       <!-- password -->
-      <el-form-item>
+      <el-form-item prop="password">
         <span class="svg-container">
           <el-icon>
             <Lock />
           </el-icon>
         </span>
-        <el-input placeholder="请输入密码" name="password" type="password" />
+        <el-input placeholder="请输入密码" name="password" type="password" v-model="formModel.password" />
         <span class="show-pwd">
           <el-icon>
             <Lock />
@@ -29,14 +29,39 @@
         </span>
       </el-form-item>
       <!-- 登录按钮 -->
-      <el-button type="primary" style="width: 100%;margin-bottom:30px">登录</el-button>
+      <el-button type="primary" style="width: 100%; margin-bottom: 30px" @click="handleLogin">登录</el-button>
     </el-form>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Avatar, Lock } from '@element-plus/icons';
-import SvgIcon from '@/components/SvgIcon/index.vue';
+import { ref } from 'vue';
+// import SvgIcon from '@/components/SvgIcon/index.vue';
+interface FormDataType {
+  username: string;
+  password: string;
+}
+
+const formModel = ref<FormDataType>({
+  username: 'super-admin',
+  password: '123456'
+});
+
+const formRules = ref({
+  username: [
+    { required: true, message: '请输入用户名', trigger: 'blur' },
+    { min: 2, max: 25, message: '用户名长度在2-25之间', trigger: 'blur' }
+  ],
+  password: [
+    { required: true, message: '请输入密码', trigger: 'blur' },
+    { min: 6, max: 25, message: '密码长度在6-25之间', trigger: 'blur' }
+  ]
+});
+
+const handleLogin = () => {
+  console.log(formModel);
+};
 </script>
 
 <style scoped lang="scss">
@@ -99,7 +124,6 @@ $cursor: #fff;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
-
     }
   }
 
@@ -110,7 +134,7 @@ $cursor: #fff;
     font-size: 16px;
     color: $dark_gray;
     cursor: pointer;
-    user-select: none
+    user-select: none;
   }
 }
 </style>
