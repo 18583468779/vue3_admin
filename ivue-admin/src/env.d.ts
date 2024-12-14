@@ -1,11 +1,13 @@
 // src/env.d.ts
-/// <reference types="vite/client" />
-
-interface ImportMetaEnv {
-  readonly VUE_APP_BASE_API: string;
-  // 这里可以添加更多的环境变量声明
+declare module '@vue/cli-service' {
+  interface EnvironmentVariables {
+    VUE_APP_BASE_API: string;
+    // 可以添加其他环境变量
+  }
 }
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
+interface ProcessEnv {
+  NODE_ENV: 'development' | 'production' | 'test';
+  VUE_APP_BASE_API: string;
+  // 同样，可以添加其他环境变量
 }
