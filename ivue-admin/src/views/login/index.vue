@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" :model="formModel" :rules="formRules">
+    <el-form class="login-form" :model="formModel" :rules="formRules" ref="loginFormRef">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
@@ -30,13 +30,15 @@
         </span>
       </el-form-item>
       <!-- 登录按钮 -->
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px" @click="handleLogin">登录</el-button>
+      <el-button :loading="loginLoading" type="primary" style="width: 100%; margin-bottom: 30px"
+        @click="handleLogin">登录</el-button>
     </el-form>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Avatar, Lock, Hide, View } from '@element-plus/icons-vue';
+import type { FormInstance, FormRules } from 'element-plus';
 import { ref } from 'vue';
 // import SvgIcon from '@/components/SvgIcon/index.vue';
 interface FormDataType {
@@ -48,10 +50,11 @@ const formModel = ref<FormDataType>({
   username: 'super-admin',
   password: '123456'
 });
-
 const passwordType = ref('password');
+const loginLoading = ref(false); // 按钮loading
+const loginFormRef = ref<FormInstance | null>(null);
 
-const formRules = ref({
+const formRules = ref<FormRules<FormDataType>>({
   username: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
     { min: 2, max: 25, message: '用户名长度在2-25之间', trigger: 'blur' }
@@ -71,7 +74,14 @@ const handlePwdType = () => {
 };
 
 const handleLogin = () => {
-  console.log(formModel);
+  // 表单验证
+  loginFormRef.value!.validate((valid, fields) => {
+    if (valid) {
+      console.log('submit!', formModel);
+    } else {
+      console.log('error submit!', fields);
+    }
+  });
 };
 </script>
 

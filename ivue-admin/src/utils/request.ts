@@ -1,13 +1,10 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
-console.log(
-  'import.meta.env.VUE_APP_BASE_API',
-  import.meta.env.VUE_APP_BASE_API
-);
+console.log(process.env);
 
-const service = axios.create({
-  baseURL: import.meta.env.VUE_APP_BASE_API,
+const instance: AxiosInstance = axios.create({
+  baseURL: '/',
   timeout: 5000
 });
 
-export default service;
+export default instance;
