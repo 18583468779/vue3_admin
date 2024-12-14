@@ -37,14 +37,13 @@
 </template>
 
 <script setup lang="ts">
+import { FormDataType } from '@/index';
 import { Avatar, Lock, Hide, View } from '@element-plus/icons-vue';
 import type { FormInstance, FormRules } from 'element-plus';
 import { ref } from 'vue';
+import { useStore } from 'vuex';
+const store = useStore();
 // import SvgIcon from '@/components/SvgIcon/index.vue';
-interface FormDataType {
-  username: string;
-  password: string;
-}
 
 const formModel = ref<FormDataType>({
   username: 'super-admin',
@@ -75,9 +74,10 @@ const handlePwdType = () => {
 
 const handleLogin = () => {
   // 表单验证
-  loginFormRef.value!.validate((valid, fields) => {
+  loginFormRef.value!.validate(async (valid, fields) => {
     if (valid) {
-      console.log('submit!', formModel);
+      loginLoading.value = true;
+      const data = await store.dispatch('user/login', formModel.value);
     } else {
       console.log('error submit!', fields);
     }

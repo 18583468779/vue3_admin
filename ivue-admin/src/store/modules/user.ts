@@ -1,11 +1,12 @@
 import { login } from '@/api/sys';
+import { FormDataType } from '@/index';
 import md5 from 'md5';
 export default {
-  namespace: true,
+  namespaced: true,
   state: () => ({}),
   mutations: {},
   actions: {
-    login(context: any, userInfo: any) {
+    login(context: any, userInfo: FormDataType) {
       const { username, password } = userInfo;
       return new Promise((resolve, reject) => {
         login({
