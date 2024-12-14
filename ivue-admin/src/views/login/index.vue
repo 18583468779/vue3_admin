@@ -12,7 +12,7 @@
           </el-icon>
           <!-- <svg-icon icon="https://res.lgdsunday.club/user.svg" /> -->
         </span>
-        <el-input placeholder="请输入用户名" name="username" type="text" v-model="formModel.username" />
+        <el-input class="input" placeholder="请输入用户名" name="username" type="text" v-model="formModel.username" />
       </el-form-item>
       <!-- password -->
       <el-form-item prop="password">
@@ -21,10 +21,11 @@
             <Lock />
           </el-icon>
         </span>
-        <el-input placeholder="请输入密码" name="password" type="password" v-model="formModel.password" />
-        <span class="show-pwd">
+        <el-input class="input" placeholder="请输入密码" name="password" :type="passwordType" v-model="formModel.password" />
+        <span class="show-pwd" @click="handlePwdType">
           <el-icon>
-            <Lock />
+            <Hide v-if="passwordType == 'password'" />
+            <View v-else />
           </el-icon>
         </span>
       </el-form-item>
@@ -35,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { Avatar, Lock } from '@element-plus/icons';
+import { Avatar, Lock, Hide, View } from '@element-plus/icons-vue';
 import { ref } from 'vue';
 // import SvgIcon from '@/components/SvgIcon/index.vue';
 interface FormDataType {
@@ -48,6 +49,8 @@ const formModel = ref<FormDataType>({
   password: '123456'
 });
 
+const passwordType = ref('password');
+
 const formRules = ref({
   username: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
@@ -58,6 +61,14 @@ const formRules = ref({
     { min: 6, max: 25, message: '密码长度在6-25之间', trigger: 'blur' }
   ]
 });
+
+const handlePwdType = () => {
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text';
+  } else {
+    passwordType.value = 'password';
+  }
+};
 
 const handleLogin = () => {
   console.log(formModel);
@@ -95,6 +106,13 @@ $cursor: #fff;
       display: inline-block;
       height: 47px;
       width: 85%;
+
+      div {
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        box-shadow: none;
+      }
 
       input {
         height: 47px;
