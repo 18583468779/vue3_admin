@@ -29,8 +29,7 @@ export default {
           password: md5(password)
         })
           .then((res: any) => {
-            const data: ResponseType<{ token: string }> = res.data;
-            context.commit('setToken', data.data.token);
+            context.commit('setToken', res.token);
             resolve(res);
           })
           .catch((error: any) => {
