@@ -1,11 +1,11 @@
 import { login } from '@/api/sys';
 import { EToken } from '@/enum';
-import { FormDataType, ResponseType } from '@/index';
+import { FormDataType } from '@/index';
 import { getItem, setItem } from '@/utils/storage';
 import md5 from 'md5';
 import { ActionContext } from 'vuex';
 
-type UserState = {
+export type UserState = {
   token: string;
 };
 

@@ -44,7 +44,6 @@ import { ref } from 'vue';
 import { useStore } from 'vuex';
 const store = useStore();
 // import SvgIcon from '@/components/SvgIcon/index.vue';
-
 const formModel = ref<FormDataType>({
   username: 'super-admin',
   password: '123456'
