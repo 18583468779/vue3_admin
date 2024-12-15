@@ -1,20 +1,37 @@
 import { login } from '@/api/sys';
-import { FormDataType } from '@/index';
+import { EToken } from '@/enum';
+import { FormDataType, ResponseType } from '@/index';
+import { getItem, setItem } from '@/utils/storage';
 import md5 from 'md5';
+import { ActionContext } from 'vuex';
+
+type UserState = {
+  token: string;
+};
+
 export default {
   namespaced: true,
-  state: () => ({}),
-  mutations: {},
+  state: () => ({
+    token: getItem(EToken.TOKEN) ?? ''
+  }),
+  mutations: {
+    setToken(state: UserState, token: string) {
+      state.token = token;
+      setItem(EToken.TOKEN, token); // 设置缓存
+    }
+  },
   actions: {
-    login(context: any, userInfo: FormDataType) {
+    login(context: ActionContext<UserState, any>, userInfo: FormDataType) {
       const { username, password } = userInfo;
       return new Promise((resolve, reject) => {
         login({
           username,
           password: md5(password)
         })
-          .then((data: any) => {
-            resolve(data);
+          .then((res: any) => {
+            const data: ResponseType<{ token: string }> = res.data;
+            context.commit('setToken', data.data.token);
+            resolve(res);
           })
           .catch((error: any) => {
             reject(error);

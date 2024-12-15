@@ -77,8 +77,7 @@ const handleLogin = () => {
   loginFormRef.value!.validate(async (valid, fields) => {
     if (valid) {
       // loginLoading.value = true;
-      const data = await store.dispatch('user/login', formModel.value);
-      console.log('data', data);
+      await store.dispatch('user/login', formModel.value);
     } else {
       console.log('error submit!', fields);
     }
