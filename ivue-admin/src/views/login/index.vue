@@ -76,8 +76,9 @@ const handleLogin = () => {
   // 表单验证
   loginFormRef.value!.validate(async (valid, fields) => {
     if (valid) {
-      loginLoading.value = true;
+      // loginLoading.value = true;
       const data = await store.dispatch('user/login', formModel.value);
+      console.log('data', data);
     } else {
       console.log('error submit!', fields);
     }
