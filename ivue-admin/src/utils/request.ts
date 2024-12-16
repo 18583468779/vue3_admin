@@ -7,6 +7,7 @@ import axios, {
 import { ElMessage } from 'element-plus';
 import { ResponseType } from '..';
 import store from '@/store';
+import { isCheckTimeout } from './auth';
 
 const instance: AxiosInstance = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
@@ -16,6 +17,11 @@ const instance: AxiosInstance = axios.create({
 instance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     if (store.getters.token) {
+      if (isCheckTimeout()) {
+        // 登录超时退出登录
+        store.dispatch('user/logout');
+        return Promise.reject(new Error('token 失效'));
+      }
       // 给请求都带上token
       config.headers!.Authorization = `Bearer ${store.getters.token}`;
     }

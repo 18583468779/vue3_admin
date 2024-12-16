@@ -2,6 +2,7 @@ import { getUserInfo, login } from '@/api/sys';
 import { EToken } from '@/enum';
 import { FormDataType, UserInfoType } from '@/index';
 import router from '@/router';
+import { setTimeStamp } from '@/utils/auth';
 import { getItem, removeAllItem, setItem } from '@/utils/storage';
 import { ElMessage } from 'element-plus';
 import md5 from 'md5';
@@ -40,6 +41,8 @@ export default {
             context.commit('setToken', res.token);
             if (res.token) {
               ElMessage.success('恭喜你，登录成功');
+              // 保存登录时间
+              setTimeStamp();
               router.push('/');
             }
             resolve(res);
