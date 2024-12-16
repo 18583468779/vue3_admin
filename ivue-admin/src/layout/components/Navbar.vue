@@ -16,7 +16,7 @@
             <a target="blank" href="#">
               <el-dropdown-item>课程主页</el-dropdown-item>
             </a>
-            <el-dropdown-item divided>退出登录</el-dropdown-item>
+            <el-dropdown-item divided @click="handleLogout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
 
@@ -32,6 +32,10 @@ const store = useStore();
 const userInfo = store.getters.userInfo;
 console.log(userInfo);
 
+const handleLogout = () => {
+  // 退出登录
+  store.dispatch('user/logout');
+};
 </script>
 
 <style scoped lang="scss">

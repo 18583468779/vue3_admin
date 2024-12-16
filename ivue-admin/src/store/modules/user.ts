@@ -1,7 +1,9 @@
 import { getUserInfo, login } from '@/api/sys';
 import { EToken } from '@/enum';
 import { FormDataType, UserInfoType } from '@/index';
-import { getItem, setItem } from '@/utils/storage';
+import router from '@/router';
+import { getItem, removeAllItem, setItem } from '@/utils/storage';
+import { ElMessage } from 'element-plus';
 import md5 from 'md5';
 import { ActionContext } from 'vuex';
 
@@ -36,6 +38,10 @@ export default {
         })
           .then((res: any) => {
             context.commit('setToken', res.token);
+            if (res.token) {
+              ElMessage.success('恭喜你，登录成功');
+              router.push('/');
+            }
             resolve(res);
           })
           .catch((error: any) => {
@@ -47,6 +53,16 @@ export default {
     async getUserInfo(context: ActionContext<UserInfoType, any>) {
       const res = (await getUserInfo()) as unknown as UserInfoType;
       context.commit('setUserInfo', res);
+    },
+    /**
+     *  退出登录
+     */
+    logout(context: ActionContext<any, any>) {
+      context.commit('setUserInfo', {});
+      context.commit('setToken', '');
+      removeAllItem();
+      router.push('/login');
+      ElMessage.success('退出登录成功');
     }
   }
 };
