@@ -26,9 +26,10 @@ export default function setupMock() {
     message: '登录成功'
   });
   // 生成一个随机尺寸的图片地址
-  const randomAvatarUrl = `https://placeimg.com/${Mock.mock(
-    '@integer(100, 500)'
-  )}/${Mock.mock('@integer(100, 500)')}/people`;
+  const randomAvatarUrl =
+    'https://randomuser.me/api/portraits/men/' +
+    Mock.mock('@integer(1, 100)') +
+    '.jpg';
   // 可以根据需要添加更多的Mock接口
   Mock.mock('/api/sys/profile', 'get', {
     code: 0,
