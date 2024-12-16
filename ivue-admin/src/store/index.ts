@@ -5,13 +5,14 @@ import getters from './getters';
 interface RootState {
   user: UserState;
 }
-interface Getters {
-  token: string;
-  // 其他 getters 的返回类型
-}
-export default createStore<RootState & Getters>({
+// interface Getters {
+//   token: string;
+//   // hasUserInfo: object;
+//   // 其他 getters 的返回类型
+// }
+export default createStore<RootState>({
   getters,
   modules: {
     user
   }
-}) as Store<RootState & Getters>;
+}) as Store<RootState>;

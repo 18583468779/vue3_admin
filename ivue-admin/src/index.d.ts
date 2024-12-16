@@ -10,3 +10,18 @@ export interface ResponseType<T> {
   data: T;
   message: string;
 }
+
+// 用户信息的类型
+export interface UserInfoType {
+  age: number;
+  avatar: string;
+  email: string;
+  id: string;
+  title: string;
+  username: string;
+  permission: {
+    menus: Array<string>;
+    points: Array<string>;
+  };
+  roles: Array<any>;
+}
