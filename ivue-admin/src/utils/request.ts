@@ -46,6 +46,15 @@ instance.interceptors.response.use(
   },
   // 请求失败
   (error: AxiosError) => {
+    // 被动退出登录，如果要实现单点登录，那么这里还需要加一个对状态码的判断
+    if (
+      error.response &&
+      error.response.data &&
+      (error.response.data as any).code === 401
+    ) {
+      // token 超时
+      store.dispatch('user/logout');
+    }
     ElMessage.error(error.message);
     return Promise.reject(error);
   }

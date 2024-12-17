@@ -4,5 +4,5 @@ export enum EToken {
 
 export enum EConst { // 定义常量
   TIME_STAMP = 'timestamp', // token 时间戳
-  TOKEN_TIMEOUT_VALUE = 5000 // 超时时长 2小时
+  TOKEN_TIMEOUT_VALUE = 7200000 // 超时时长 2小时
 }
