@@ -22,7 +22,13 @@
 </template>
 
 <script setup lang="ts">
+import { filterRoutes, generateMenus } from '@/utils/route';
 import { InfoFilled } from '@element-plus/icons-vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
+const RoutesList = filterRoutes(router.getRoutes());
+console.log(generateMenus(RoutesList));
+
 </script>
 
 <style scoped></style>

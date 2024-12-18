@@ -6,3 +6,8 @@ declare module '*.vue' {
 }
 
 declare module '*.scss';
+
+declare module 'path' {
+  const content: any;
+  export = content;
+}

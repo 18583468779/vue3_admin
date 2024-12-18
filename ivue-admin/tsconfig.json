@@ -17,7 +17,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    "lib": ["ES2020", "dom", "dom.iterable", "scripthost"]
   },
   "include": [
     "src/**/*.js",

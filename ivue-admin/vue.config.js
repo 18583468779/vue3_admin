@@ -1,5 +1,12 @@
 module.exports = {
   // 其他配置...
+  configureWebpack: {
+    resolve: {
+      fallback: {
+        path: require.resolve('path-browserify')
+      }
+    }
+  },
   devServer: {
     proxy: {
       '/api': {
