@@ -11,7 +11,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
     redirect: '/user/manage',
     meta: {
       title: 'user',
-      icon: 'personnel'
+      icon: 'User'
     },
     children: [
       {
@@ -20,7 +20,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         component: () => import('@/views/user-manage/index.vue'),
         meta: {
           title: 'userManage',
-          icon: 'personnel-manage'
+          icon: 'Management'
         }
       },
       {
@@ -29,7 +29,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         component: () => import('@/views/role-list/index.vue'),
         meta: {
           title: 'roleList',
-          icon: 'role'
+          icon: 'Operation'
         }
       },
       {
@@ -38,7 +38,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         component: () => import('@/views/permission-list/index.vue'),
         meta: {
           title: 'permissionList',
-          icon: 'permission'
+          icon: 'Grid'
         }
       },
       {
@@ -65,7 +65,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
     redirect: '/article/ranking',
     meta: {
       title: 'article',
-      icon: 'article'
+      icon: 'Document'
     },
     children: [
       {
@@ -74,7 +74,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         component: () => import('@/views/article-ranking/index.vue'),
         meta: {
           title: 'articleRanking',
-          icon: 'article-ranking'
+          icon: 'Document'
         }
       },
       {
@@ -91,7 +91,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         component: () => import('@/views/article-create/index.vue'),
         meta: {
           title: 'articleCreate',
-          icon: 'article-create'
+          icon: 'Document'
         }
       },
       {
@@ -125,7 +125,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/profile/index.vue'),
         meta: {
           title: 'profile',
-          icon: 'el-icon-user'
+          icon: 'Menu'
         }
       },
       // 404
