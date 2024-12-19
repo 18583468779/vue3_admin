@@ -1,5 +1,5 @@
 import { UserState } from './modules/user';
-
+import variables from '@/styles/variables.module.scss';
 // getters的作用是快捷方式，快速获取state的方法(计算属性)
 interface RootState {
   user: UserState;
@@ -13,6 +13,7 @@ const getters = {
    */
   hasUserInfo: (state: RootState) =>
     Object.keys(state.user.userInfo).length > 0,
-  userInfo: (state: RootState) => state.user.userInfo // 用户信息
+  userInfo: (state: RootState) => state.user.userInfo, // 用户信息
+  cssVar: () => variables // css变量
 };
 export default getters;

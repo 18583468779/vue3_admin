@@ -9,7 +9,7 @@ $subMenuHover: #001528;
 $sideBarWidth: 210px;
 //JS与scss共享变量，在scss中通过：export导出，在js中可以通过ESM进行导入
 :export {
-  menutext: $menuText;
+  menuText: $menuText;
   menuActiveText: $menuActiveText;
   subMenuActiveText: $subMenuActiveText;
   menuBg: $menuBg;

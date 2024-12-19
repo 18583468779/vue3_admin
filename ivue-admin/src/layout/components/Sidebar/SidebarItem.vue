@@ -5,7 +5,7 @@
     </template>
     <SidebarItem v-for="item in route.children" :key="item.path" :route="item" />
   </el-sub-menu>
-  <el-menu-item v-else>
+  <el-menu-item v-else :index="route.path">
     <menu-item :title="route.meta!.title" :icon="route.meta!.icon"></menu-item>
   </el-menu-item>
 </template>
