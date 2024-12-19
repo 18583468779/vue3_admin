@@ -3,7 +3,7 @@
     <el-icon>
       <component :is="icon"></component>
     </el-icon>
-    <span>{{ title }}</span>
+    <span style="margin-left: 5px;">{{ title }}</span>
   </div>
 </template>
 
@@ -12,6 +12,7 @@ import { defineProps } from 'vue';
 type Props = {
   title: any
   icon: any
+  isSubItem: boolean // 是否是二级item，是的话当收缩时隐藏
 }
 defineProps<Props>();
 </script>

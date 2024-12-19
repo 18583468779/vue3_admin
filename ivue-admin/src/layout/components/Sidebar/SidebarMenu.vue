@@ -1,6 +1,7 @@
 <template>
-  <el-menu unique-opened :background-color="store.getters.cssVar.menuBg" :text-color="store.getters.cssVar.menuText"
-    :active-text-color="store.getters.cssVar.menuActiveText" router :default-active="activeMenu">
+  <el-menu :collapse="!store.getters.open" unique-opened :background-color="store.getters.cssVar.menuBg"
+    :text-color="store.getters.cssVar.menuText" :active-text-color="store.getters.cssVar.menuActiveText" router
+    :default-active="activeMenu">
     <SidebarItem v-for="item in routes" :key="item.path" :route="item" />
   </el-menu>
 </template>
