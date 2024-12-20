@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="[!store.getters.open && 'menuItem']" style="margin-left: -7px;">
     <el-icon>
       <component :is="icon"></component>
     </el-icon>
@@ -9,6 +9,8 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue';
+import { useStore } from 'vuex';
+const store = useStore();
 type Props = {
   title: any
   icon: any
@@ -17,4 +19,11 @@ type Props = {
 defineProps<Props>();
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.menuItem {
+
+  span {
+    margin-left: 12px !important;
+  }
+}
+</style>
