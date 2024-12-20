@@ -20,10 +20,11 @@ const toggleClick = () => {
 <style scoped lang="scss">
 .h-container {
   padding: 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .h {
-    display: inline-block;
-    vertical-align: middle;
     width: 20px;
     height: 20px;
   }

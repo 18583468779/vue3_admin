@@ -1,6 +1,7 @@
 <template>
   <div class="navbar">
     <Hanburger class="h-container" />
+    <Breadcrumb />
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -30,6 +31,7 @@
 import { useStore } from 'vuex';
 import { UserFilled } from '@element-plus/icons-vue';
 import Hanburger from '@/components/Hanburger/index.vue';
+import Breadcrumb from '@/components/Breadcrumb/index.vue';
 
 const store = useStore();
 const userInfo = store.getters.userInfo;
