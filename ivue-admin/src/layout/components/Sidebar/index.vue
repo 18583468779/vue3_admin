@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="logo-container">
-      <el-avatar size="44" shape="square" :src="circleUrl"></el-avatar>
+      <el-avatar :size="logoHeight" shape="square" :src="circleUrl"></el-avatar>
       <h1 class="logo-title" v-if="store.getters.open">vue3通用后台管理系统</h1>
     </div>
     <el-scrollbar>
@@ -21,16 +21,18 @@ const state = reactive({
 });
 const { circleUrl } = toRefs(state);
 const store = useStore();
-
+const logoHeight = 44;
 </script>
 
 <style scoped lang="scss">
 .logo-container {
-  height: 44px;
+  height: v-bind(logoHeight) + 'px';
   padding: 10px 0 22px 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 82px;
+  box-sizing: border-box;
 
   .logo-title {
     margin-left: 10px;
