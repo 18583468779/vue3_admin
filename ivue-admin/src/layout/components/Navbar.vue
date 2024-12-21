@@ -70,6 +70,7 @@ const handleLogout = () => {
     align-items: center;
     float: right;
     padding-right: 16px;
+    gap: 20px;
 
     .right-menu {
       display: flex;

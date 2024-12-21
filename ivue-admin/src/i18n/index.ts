@@ -1,23 +1,25 @@
-import { createI18n } from 'vue-i18n';
+// 语言切换
 
-const message = {
-  en: {
-    msg: {
-      hello: 'hello world'
-    }
-  },
-  zh: {
-    msg: {
-      hello: '你好，世界'
+import { createI18n } from 'vue-i18n';
+import mZhLocale from './lang/zh';
+import mEnLocale from './lang/en';
+
+const i18n = createI18n({
+  legacy: false, // you must set `false`, to use Composition API
+  locale: 'en',
+  fallbackLocale: 'zh',
+  messages: {
+    en: {
+      message: {
+        ...mEnLocale
+      }
+    },
+    zh: {
+      message: {
+        ...mZhLocale
+      }
     }
   }
-};
-const locale = 'zh';
-const i18n = createI18n({
-  legacy: false,
-  locale,
-  globalInjection: true,
-  message
 });
-
 export default i18n;
+// ...
