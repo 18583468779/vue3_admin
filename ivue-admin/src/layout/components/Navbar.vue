@@ -3,6 +3,7 @@
     <Hanburger class="h-container" />
     <Breadcrumb />
     <div class="right-menu">
+      <lang-select class="right-menu-item hover-effect" />
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <el-avatar shape="square" :size="40" :src="userInfo.avatar"></el-avatar>
@@ -32,7 +33,7 @@ import { useStore } from 'vuex';
 import { UserFilled } from '@element-plus/icons-vue';
 import Hanburger from '@/components/Hanburger/index.vue';
 import Breadcrumb from '@/components/Breadcrumb/index.vue';
-
+import LangSelect from '@/components/LangSelect/index.vue';
 const store = useStore();
 const userInfo = store.getters.userInfo;
 console.log(userInfo);
@@ -70,16 +71,40 @@ const handleLogout = () => {
     float: right;
     padding-right: 16px;
 
-    ::v-deep .avatar-container {
-      cursor: pointer;
+    .right-menu {
+      display: flex;
+      align-items: center;
+      float: right;
+      padding-right: 16px;
 
-      .avatar-wrapper {
-        margin-top: 5px;
-        position: relative;
+      ::v-deep .right-menu-item {
+        display: inline-block;
+        padding: 0 18px 0 0;
+        font-size: 24px;
+        color: #5a5e66;
+        vertical-align: text-bottom;
 
-        .el-avatar {
-          --el-avatar-background-color: none;
-          margin-right: 12px;
+        &.hover-effect {
+          cursor: pointer;
+          transition: background 0.3s;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.025);
+          }
+        }
+      }
+
+      ::v-deep .avatar-container {
+        cursor: pointer;
+
+        .avatar-wrapper {
+          margin-top: 5px;
+          position: relative;
+
+          .el-avatar {
+            --el-avatar-background-color: none;
+            margin-right: 12px;
+          }
         }
       }
     }
