@@ -12,6 +12,7 @@ const getters = {
     Object.keys(state.user.userInfo).length > 0,
   userInfo: (state: RootState) => state.user.userInfo, // 用户信息
   cssVar: () => variables, // css变量
-  open: (state: RootState) => state.app.open // 左侧sidebar伸缩
+  open: (state: RootState) => state.app.open, // 左侧sidebar伸缩
+  mainColor: (state: RootState) => state.theme.mainColor // 主题色
 };
 export default getters;

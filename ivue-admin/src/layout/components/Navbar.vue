@@ -3,6 +3,7 @@
     <Hanburger class="h-container" />
     <Breadcrumb />
     <div class="right-menu">
+      <theme-select class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -34,6 +35,8 @@ import { UserFilled } from '@element-plus/icons-vue';
 import Hanburger from '@/components/Hanburger/index.vue';
 import Breadcrumb from '@/components/Breadcrumb/index.vue';
 import LangSelect from '@/components/LangSelect/index.vue';
+import ThemeSelect from '@/components/ThemeSelect/index.vue';
+
 const store = useStore();
 const userInfo = store.getters.userInfo;
 console.log(userInfo);

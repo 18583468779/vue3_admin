@@ -9,3 +9,10 @@ export enum EConst { // 定义常量
 
 // 国际化
 export const LANG = 'language';
+
+// 主题色
+
+export enum ETheme {
+  MAIN_COLOR = 'mainColor',
+  DEFAULT_COLOR = '#409eff'
+}

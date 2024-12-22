@@ -2,10 +2,12 @@ import { createStore, Store } from 'vuex';
 import user, { UserState } from './modules/user';
 import getters from './getters';
 import app, { AppType } from './modules/app';
+import theme, { ThemeType } from './modules/theme';
 
 export interface RootState {
   user: UserState;
   app: AppType;
+  theme: ThemeType;
 }
 // interface Getters {
 //   token: string;
@@ -16,6 +18,7 @@ export default createStore<RootState>({
   getters,
   modules: {
     user,
-    app
+    app,
+    theme
   }
 }) as Store<RootState>;
