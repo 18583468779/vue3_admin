@@ -5,6 +5,7 @@
     <div class="right-menu">
       <theme-select class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
+      <Screenfull class="right-menu-item hover-effect" />
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <el-avatar shape="square" :size="40" :src="userInfo.avatar"></el-avatar>
@@ -36,6 +37,7 @@ import Hanburger from '@/components/Hanburger/index.vue';
 import Breadcrumb from '@/components/Breadcrumb/index.vue';
 import LangSelect from '@/components/LangSelect/index.vue';
 import ThemeSelect from '@/components/ThemeSelect/index.vue';
+import Screenfull from '@/components/Screenfull/index.vue';
 
 const store = useStore();
 const userInfo = store.getters.userInfo;
