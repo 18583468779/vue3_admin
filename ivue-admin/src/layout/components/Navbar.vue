@@ -3,6 +3,7 @@
     <Hanburger class="h-container" />
     <Breadcrumb />
     <div class="right-menu">
+      <HeaderSearch class="right-menu-item hover-effect" />
       <theme-select class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
       <Screenfull class="right-menu-item hover-effect" />
@@ -38,6 +39,7 @@ import Breadcrumb from '@/components/Breadcrumb/index.vue';
 import LangSelect from '@/components/LangSelect/index.vue';
 import ThemeSelect from '@/components/ThemeSelect/index.vue';
 import Screenfull from '@/components/Screenfull/index.vue';
+import HeaderSearch from '@/components/HeaderSearch/index.vue';
 
 const store = useStore();
 const userInfo = store.getters.userInfo;

@@ -10,7 +10,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
     component: layout,
     redirect: '/user/manage',
     meta: {
-      title: 'user',
+      title: '用户管理',
       icon: 'User'
     },
     children: [
@@ -19,7 +19,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         name: 'userManage',
         component: () => import('@/views/user-manage/index.vue'),
         meta: {
-          title: 'userManage',
+          title: '用户管理',
           icon: 'Management'
         }
       },
@@ -28,7 +28,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         name: 'role',
         component: () => import('@/views/role-list/index.vue'),
         meta: {
-          title: 'roleList',
+          title: '角色列表',
           icon: 'Operation'
         }
       },
@@ -37,7 +37,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         name: 'permission',
         component: () => import('@/views/permission-list/index.vue'),
         meta: {
-          title: 'permissionList',
+          title: '权限列表',
           icon: 'Grid'
         }
       },
@@ -46,7 +46,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         name: 'userInfo',
         component: () => import('@/views/user-info/index.vue'),
         meta: {
-          title: 'userInfo'
+          title: '用户信息'
         }
       },
       {
@@ -54,7 +54,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         name: 'import',
         component: () => import('@/views/import/index.vue'),
         meta: {
-          title: 'import'
+          title: '文件导入'
         }
       }
     ]
@@ -64,7 +64,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
     component: layout,
     redirect: '/article/ranking',
     meta: {
-      title: 'article',
+      title: '文章管理',
       icon: 'Document'
     },
     children: [
@@ -73,7 +73,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         name: 'articleRanking',
         component: () => import('@/views/article-ranking/index.vue'),
         meta: {
-          title: 'articleRanking',
+          title: '文章列表',
           icon: 'Document'
         }
       },
@@ -82,7 +82,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         name: 'articleDetail',
         component: () => import('@/views/article-detail/index.vue'),
         meta: {
-          title: 'articleDetail'
+          title: '文章详情'
         }
       },
       {
@@ -90,7 +90,7 @@ const privateRoutes: Array<RouteRecordRaw> = [
         name: 'articleCreate',
         component: () => import('@/views/article-create/index.vue'),
         meta: {
-          title: 'articleCreate',
+          title: '创建文章',
           icon: 'Document'
         }
       },

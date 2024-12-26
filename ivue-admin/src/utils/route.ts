@@ -2,6 +2,10 @@
 
 import { RouteRecordRaw } from 'vue-router';
 import path from 'path';
+export type SearchRoute = {
+  path: string;
+  title: Array<string>;
+};
 /**
  *  获取所有含有子集路由的数据
  */
@@ -76,5 +80,28 @@ const generateMenus = (routes: Array<RouteRecordRaw>, basePath = '') => {
 
   return result;
 };
-
-export { filterRoutes, generateMenus };
+/**
+ *  根据routes的数据，返回对应的fuse模糊查询规则数据
+ *
+ */
+function handleSearchData() {
+  const resultArr: Array<SearchRoute> = [];
+  function handleGetData(data: RouteRecordRaw[], prefixTitle = '') {
+    data.forEach((item) => {
+      if (item.meta?.title) {
+        const obj: SearchRoute = {
+          path: item.path,
+          title: [item.meta?.title as string]
+        };
+        prefixTitle && obj.title.unshift(prefixTitle);
+        resultArr.push(obj);
+      }
+      if (item.children && item.children!.length > 0) {
+        handleGetData(item.children, item.meta!.title as string);
+      }
+    });
+    return resultArr;
+  }
+  return handleGetData;
+}
+export { filterRoutes, generateMenus, handleSearchData };
