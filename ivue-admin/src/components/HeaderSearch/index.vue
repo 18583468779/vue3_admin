@@ -5,16 +5,18 @@
     </el-icon>
     <el-select ref="headerSearchSelectRef" class="header-search-select" v-model="search" filterable default-first-option
       remote placeholder="Search" :remote-method="querySearch" @change="onSelectChange">
+      <el-option v-for="option in searchOption" :key="option.item.path" :label="option.item.title.join('>')"
+        :value="option.item"></el-option>
     </el-select>
   </div>
 </template>
 
 <script setup lang="ts">
-import { filterRoutes, handleSearchData } from '@/utils/route';
+import { filterRoutes, handleSearchData, SearchRoute } from '@/utils/route';
 import { Search } from '@element-plus/icons-vue';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import Fuse from 'fuse.js';
+import Fuse, { FuseResult } from 'fuse.js';
 
 const router = useRouter();
 
@@ -48,13 +50,18 @@ const onShowClick = () => {
 };
 // search相关
 const search = ref('');
-
-const querySearch = (query: any) => {
-  console.log(query, fuse.search(query));
+const searchOption = ref<FuseResult<SearchRoute>[]>([]);
+const querySearch = (query: string) => {
+  const arr = fuse.search(query);
+  if (arr) {
+    searchOption.value = arr;
+  } else {
+    searchOption.value = [];
+  }
 };
 
-const onSelectChange = () => {
-  console.log('onSelectChange');
+const onSelectChange = (option: SearchRoute) => {
+  router.push(option.path);
 };
 </script>
 

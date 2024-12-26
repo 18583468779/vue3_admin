@@ -124,7 +124,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'profile',
         component: () => import('@/views/profile/index.vue'),
         meta: {
-          title: 'profile',
+          title: '个人中心',
           icon: 'Menu'
         }
       },
